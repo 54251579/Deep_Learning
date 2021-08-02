@@ -12,6 +12,7 @@ def detectAndDisplay(frame):
     faces = face_cascade.detectMultiScale(gray_frame)
 
     for (x, y, w, h) in faces:
+
         # draw rectangle at area of face
         frame = cv2.rectangle(frame, (x, y), (x+w, y+h), (0,255,0), 3)
         
@@ -20,12 +21,14 @@ def detectAndDisplay(frame):
 
         # detect eyes
         eyes = eyes_cascade.detectMultiScale(faceROI)
+
         for (eyes_x, eyes_y, eyes_w, eyes_h) in eyes:
             # get center point and radius
             eyes_center = (x++eyes_x+eyes_w//2, y+eyes_y+eyes_h//2)
             radius = int(round(eyes_w + eyes_h)*0.25)
             # draw rectangle at area of face
             frame = cv2.circle(frame, eyes_center, radius, (255,255,0), 3)
+            
     cv2.imshow('recognition', frame)
             
 cap = cv2.VideoCapture(0)
