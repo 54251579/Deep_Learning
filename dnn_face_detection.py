@@ -4,7 +4,8 @@ import numpy as np
 def DNN_detectAndDisplay(frame):
     width = frame.shape[1]
     height = frame.shape[0]
-    min_confidence = 0.5
+    min_confidence = cv2.getTrackbarPos("minConfidence", "dnn face")/100
+    
     model = 'res10_300x300_ssd_iter_140000.caffemodel'
     prototxt = 'deploy.prototxt.txt'
 
@@ -31,6 +32,11 @@ def DNN_detectAndDisplay(frame):
     cv2.imshow("dnn face", frame)
 
 cap = cv2.VideoCapture(0)
+
+cv2.namedWindow("dnn face")
+
+cv2.createTrackbar("minConfidence", "dnn face", 0, 100, lambda x:x)
+cv2.setTrackbarPos("minConfidence", "dnn face", 50)
 
 while True:
     _, frame = cap.read()
