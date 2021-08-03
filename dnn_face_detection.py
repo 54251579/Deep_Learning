@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import sys
 
 def DNN_detectAndDisplay(frame):
     width = frame.shape[1]
