@@ -31,7 +31,7 @@ def DNN_detectAndDisplay(frame):
             cv2.putText(frame, txt, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,255,0), 1)
 
     cv2.imshow("dnn face", frame)
-
+    
 cap = cv2.VideoCapture(0)
 
 cv2.namedWindow("dnn face")
